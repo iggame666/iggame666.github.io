@@ -1,0 +1,45 @@
+# /aa 表示忽略当前根目录
+# aa 表示忽略任意目录的aa文件夹和aa文件
+# aa/ 示忽略任意目录的aa文件夹
+# * 匹配任意文件名，不跨目录
+# ？匹配任意单个字符
+# **/ 匹配任意目录
+# */ 匹配当前层级下的所有目录（不匹配文件）。
+
+# 规则	含义
+# *	任意文件名或目录名
+# */	当前层所有目录
+# **	任意层级路径
+# **/	任意层级所有目录
+# /*	根目录下所有文件和目录
+# /*/	根目录下一层的所有目录
+
+*.apk
+build/
+local/
+GitHubPages游戏列表配置-需求文档.md
+*.apk
+*.zip
+*.rar
+.cxx/
+*_ruanzhu/
+*backups*/
+
+npm-debug.log
+node_modules/
+*.log
+*.sql
+*.sqlite
+*.sln
+*.csproj
+*.pidb
+*.unityproj
+*.suo
+.DS_Store
+ehthumbs.db
+Thumbs.db
+.idea/
+.vscode/
+.agents
+AGENTS.md
+README.md

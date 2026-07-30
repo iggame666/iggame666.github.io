@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="IG Game Hub 遊戲列表，探索我們精選的手機遊戲。">
+    <meta name="theme-color" content="#07111f">
+    <meta name="referrer" content="no-referrer">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https://dota2tf.github.io data:; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'"
+    >
+    <title>IG Game Hub｜遊戲列表</title>
+    <link rel="icon" type="image/png" href="images/ig_game_hub_bubble_v1.png">
+    <link rel="stylesheet" href="styles.css?v=20260723001">
+    <script src="app.js?v=20260723001" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#game-list">跳到遊戲列表</a>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="./" aria-label="IG Game Hub 首頁">
+          <img
+            class="brand__logo"
+            src="images/ig_game_hub_bubble_v1.png"
+            width="150"
+            height="150"
+            alt=""
+          >
+          <span class="brand__name">IG GAME HUB</span>
+        </a>
+        <a class="config-link" href="game_list.json">
+          <span class="config-link__dot" aria-hidden="true"></span>
+          查看 JSON
+        </a>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="page-title">
+          <div class="hero__content">
+            <p class="eyebrow">
+              <span aria-hidden="true">✦</span>
+              PLAY SOMETHING GREAT
+            </p>
+            <h1 id="page-title">下一款上癮的遊戲，<br><span>就在這裡。</span></h1>
+            <p class="hero__description">
+              從策略塔防到輕鬆益智，探索 IG Game Hub 精選作品，
+              隨時開始你的下一場冒險。
+            </p>
+            <div class="hero__meta" aria-label="遊戲列表資料">
+              <div class="stat">
+                <strong id="game-count">—</strong>
+                <span>款精選遊戲</span>
+              </div>
+              <div class="stat">
+                <strong id="config-version">—</strong>
+                <span>列表版本</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__art" aria-hidden="true">
+            <div class="hero__orbit hero__orbit--outer"></div>
+            <div class="hero__orbit hero__orbit--inner"></div>
+            <div class="hero__glow"></div>
+            <img
+              class="hero__logo"
+              src="images/ig_game_hub_bubble_v1.png"
+              width="150"
+              height="150"
+              alt=""
+            >
+            <span class="hero__spark hero__spark--one">✦</span>
+            <span class="hero__spark hero__spark--two">✦</span>
+            <span class="hero__spark hero__spark--three">•</span>
+          </div>
+        </section>
+
+        <section class="catalog" aria-labelledby="catalog-title">
+          <div class="catalog__heading">
+            <div>
+              <p class="section-kicker">ALL GAMES</p>
+              <h2 id="catalog-title">探索遊戲</h2>
+            </div>
+
+            <label class="search">
+              <span class="search__icon" aria-hidden="true"></span>
+              <span class="sr-only">搜尋遊戲</span>
+              <input
+                id="game-search"
+                type="search"
+                placeholder="搜尋遊戲名稱"
+                autocomplete="off"
+                disabled
+              >
+            </label>
+          </div>
+
+          <div id="status-message" class="status-message" role="status" aria-live="polite">
+            正在載入遊戲列表…
+          </div>
+
+          <div id="error-panel" class="error-panel" role="alert" hidden>
+            <p class="error-panel__eyebrow">LOAD ERROR</p>
+            <h3>暫時無法載入遊戲列表</h3>
+            <p id="error-message">請檢查網路連線後再試一次。</p>
+            <button id="retry-button" type="button">重新載入</button>
+          </div>
+
+          <div id="game-list" class="game-grid" aria-live="polite" aria-busy="true"></div>
+
+          <div id="empty-state" class="empty-state" hidden>
+            <span class="empty-state__icon" aria-hidden="true">?</span>
+            <h3>沒有找到相符的遊戲</h3>
+            <p>試試其他關鍵字吧。</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>IG GAME HUB</strong>
+          <p>Good games. Good times.</p>
+        </div>
+        <p>
+          遊戲資料由
+          <a href="game_list.json">GitHub Pages 靜態配置</a>
+          提供
+        </p>
+      </footer>
+    </div>
+
+    <template id="game-card-template">
+      <article class="game-card">
+        <div class="game-card__media">
+          <img class="game-card__image" width="200" height="200" alt="" loading="lazy">
+          <span class="game-card__number"></span>
+        </div>
+        <div class="game-card__body">
+          <div class="game-card__title-row">
+            <h3 class="game-card__title"></h3>
+            <span class="game-card__arrow" aria-hidden="true">↗</span>
+          </div>
+          <p class="game-card__description"></p>
+          <p class="game-card__package"></p>
+          <a class="game-card__action" target="_blank" rel="noopener noreferrer">
+            在 Google Play 查看
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+    </template>
+  </body>
+</html>
