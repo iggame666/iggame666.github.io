@@ -1,0 +1,48 @@
+centos7.6,并且默认安装了python2.7.5
+操作目录:
+/root
+
+安装 Flask（一个轻量级的 Python Web 框架）：
+1:======找到python目录======
+which python
+阿里云的文件是 /usr/bin/python
+安装pip
+sudo yum install epel-release
+sudo yum install python-pip
+更新pip
+sudo pip install --upgrade pip
+更新失败就用
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+执行下载的脚本
+sudo python get-pip.py
+2:======安装flask (which pip)======
+sudo pip install flask
+3:======在终端中执行以下命令来检查 Flask 是否已经安装：======
+python -c "import flask" && echo "Flask 已安装" || echo "Flask 未安装"
+4:======编写代码======
+5:======安装 Gunicorn（一个 Python WSGI HTTP 服务器）：======
+sudo pip install gunicorn
+查看gunicorn路径:which gunicorn
+/usr/bin/gunicorn
+6:======创建一个 Gunicorn 的启动脚本：======
+在你喜欢的目录下创建一个名为 beian.sh 的文件，并使用以下代码编写启动脚本：
+需要设置权限  chmod +x /root/beian/beian.sh
+#!/bin/bash
+cd /root/beian  # 将 /path/to/your/app 替换为 app.py 所在的目录
+/usr/bin/gunicorn -w 4 -b 0.0.0.0:80 app:app  # 启动 Gunicorn，监听 80 端口
+7:======设置开机自启动：======
+sudo cp beian.service /etc/systemd/system/
+sudo systemctl enable beian.service
+停止 sudo systemctl stop beian.service
+启动 sudo systemctl start beian.service
+重启 sudo systemctl restart beian.service
+
+8:======查看日志======
+sudo journalctl -u beian.service
+停止日志 sudo systemctl stop systemd-journald
+删除日志 sudo rm /var/log/journal/*/*.journal
+重启日志 sudo systemctl start systemd-journald
+删除超过1s的日志,需要先停止日志?
+sudo journalctl --vacuum-time=1s
+

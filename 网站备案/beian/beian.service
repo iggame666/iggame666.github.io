@@ -1,0 +1,8 @@
+[Unit]
+Description=Switch Waibao Script
+
+[Service]
+ExecStart=/root/beian/beian.sh
+
+[Install]
+WantedBy=default.target
